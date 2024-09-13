@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <style>
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Page de Connexion</h1>
+    <form id="connexionForm">
+        <label for="email">Email :</label>
+        <input type="email" id="email" required>
+        <div class="error" id="email"></div>
+
+        <label for="password">Mot de passe :</label>
+        < type="password" id="password" required>
+        <div class="error" id="passwordError"></div>
+
+        <button type="submit">Se connecter</>
+    </form>
+
+    <script>
+        const form = document.getElementById('connexionForm');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            let emailError = '';
+            let passwordError = '';
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Vér du format de l'email
+            if (!/\+@\S+\.\S+/.test(email)) {
+                emailError = 'Email invalide.';
+            }
+
+            // Vérification du mot de passe
+            if (password.length < 6) {
+                passwordError = 'Le mot de passe doit contenir au moins 6 caractères.';
+ }
+
+            documentElementById('emailError').textContent = emailError;
+            document.getElementById('passwordError').textContent = passwordError;
+
+            if (!emailError && !passwordError) {
+                // Soumettre le formulaire ou effectuer d'autres actions
+                console.log('Formulaire valide, procéder à la connexion.');
+            }
+        });
+ </script>
+</body>
+</html>
